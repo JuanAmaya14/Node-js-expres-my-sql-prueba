@@ -1,4 +1,4 @@
-# Depencencias
+# Dependencias
     dotenv
     express
     mysql2
