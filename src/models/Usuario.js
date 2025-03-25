@@ -12,15 +12,29 @@ const Usuario = sequelize.define(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      unique: true
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     apellido: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    correo: {
+      type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: true
+    },
+    contrasenha: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    // 0 = cliente, 1 = usuario
+    rol: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
   },
   {

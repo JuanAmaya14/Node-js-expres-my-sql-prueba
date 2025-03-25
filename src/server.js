@@ -2,13 +2,23 @@ require("dotenv").config();
 const express = require("express");
 const { sequelize } = require("./config/db"); // Importa primero la conexión a la BD
 const usuarioRoutes = require("./routes/UsuarioRoutes");
+const session = require("express-session");
 
 const app = express();
-app.use(express.json());
+app.use(express.json());  
 
 app.set("appName", "prueba crud bases de datos");
 app.set("host", "localhost");
 app.set("port", 8083);
+
+app.use(
+  session({
+    secret: "mi_secreto_super_seguro", // Cambia esto por una clave secreta segura
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Usa `true` si tu app está en HTTPS
+  })
+);
 
 // Verifica que sequelize esté conectado antes de importar modelos
 async function startServer() {
