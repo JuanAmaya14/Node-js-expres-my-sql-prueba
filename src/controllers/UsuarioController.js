@@ -1,5 +1,6 @@
 const Usuario = require("../models/Usuario");
 
+//login
 const login = async (req, res) => {
   const { correo, contrasenha } = req.body;
 
@@ -38,6 +39,7 @@ const bienvenida = (req, res) => {
   res.send(`<h1>¡Bienvenido, ${req.session.usuario.nombre}!</h1>`);
 };
 
+// middleware
 const verificarRol = (req, res, next) => {
   if (!req.session || !req.session.usuario) {
     return res.status(401).send("No autorizado, inicie sesión primero");
@@ -52,6 +54,7 @@ const verificarRol = (req, res, next) => {
   }
 };
 
+// Rutas de roles
 const getAdmin = async (req, res) => {
   res.send("Pagina pa admins");
 };
@@ -171,6 +174,7 @@ const eliminarUsuario = async (req, res) => {
   }
 };
 
+//exportar modulos
 module.exports = {
   login,
   bienvenida,
